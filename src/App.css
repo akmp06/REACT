@@ -62,6 +62,7 @@ button{
   border-radius: 8px;
   background-color: white;
   border: 5px solid black;
+
 }
 button:hover{
   background-color: red;
@@ -70,4 +71,8 @@ button:hover{
 }
 .note-list{
   font-family: 'Dancing Script', 'Times New Roman', Times, serif;
+  color: red;
+}
+li{
+  font-size: 40px;
 }
