@@ -1,5 +1,8 @@
 /* .App {
-  text-align: center;
+  text-align: left;
+}
+.bio-data {
+  background: aqua;
 }
 
 .App-logo {
@@ -36,3 +39,35 @@
     transform: rotate(360deg);
   }
 } */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Manrope:wght@200&family=Poppins:wght@500;700&family=Varela+Round&family=Young+Serif&display=swap');
+body{
+  background-color: black;
+}
+.App{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+button,input{
+  font-family: 'Young+Serif', 'Times New Roman', Times, serif;
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px;
+}
+input{
+  border: dotted red;
+}
+button{
+  border-radius: 8px;
+  background-color: white;
+  border: 5px solid black;
+}
+button:hover{
+  background-color: red;
+  border: 5px solid white;
+  color: white;
+}
+.note-list{
+  font-family: 'Dancing Script', 'Times New Roman', Times, serif;
+}
