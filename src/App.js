@@ -180,7 +180,7 @@ const App = () => {
       <button onClick={addNote}>{isEditing ? 'Update Note' : 'Create Note'}</button>
       <ul>
         {notes.map((note, index) => (
-          <li key={index}>
+          <li key={index} className="note-list">
             {note}
             <button onClick={() => editNote(index)}>Edit</button>
             <button onClick={() => deleteNote(index)}>Delete</button>
