@@ -44,29 +44,25 @@
 // // }
 // // export default NoteList
 
-import React from 'react'
+import {useContext} from "react"
+import{NoteContext} from '../contexts/Note'
 
-const NoteList = (props) => {
+const NoteList = () => {
+	const ctxValue = useContext(NoteContext)
     const removeHandler = (noteId) => {
-		// 2
-		const newNotes = props.notes.filter((note) => note.id !== noteId);
-		// 							(({id: 1, title: note-1}) => 1 !== 2)
-		//							(({id: 2, title: note-2}) => 2 !== 2)
-
-		props.setNotes(newNotes);
-		// notes = [{id: 1, title: note-1}, {id: 2, title: note-2}, {id: 3, title: note-3}] --> Removed/ Falaya Dibe
-		// notes = [{id: 1, title: note-1}, {id: 2, title: note-2}]
-	};
+		const newNotes = ctxValue.notes.filter((note) => note.id !== noteId);
+		ctxValue.setNotes(newNotes);
+			};
 
 	const editHandler = (note) => {
-		props.setEditMode(true);
-		props.setNoteTitle(note.title);
-		props.setEditableNote(note);
+		ctxValue.setEditMode(true);
+		ctxValue.setNoteTitle(note.title);
+		ctxValue.setEditableNote(note);
 	};
 
   return (
     <ul className="note-list">
-				{props.notes.map((note) => (
+				{ctxValue.notes.map((note) => (
 					<li key={note.id}>
 						<span>{note.title}</span>
 						<button onClick={() => editHandler(note)}>Edit</button>

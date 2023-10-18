@@ -1,9 +1,20 @@
 import "./App.css";
-import { useState } from "react";
 import Form from "./components/Form";
 import NoteList from "./components/NoteList";
 
 const App = () => {
+
+  return (
+    <div className="App">
+      <Form />
+      <div className="note-list">
+        <NoteList />
+      </div>
+    </div>
+  );
+
+
+
 
 	////my code some prob in page load
   // const [noteTitle, setNoteTitle] = useState("");
@@ -113,49 +124,7 @@ const App = () => {
 //   };
 
 //mycode some prob in page load
-
-
-    const [noteTitle, setNoteTitle] = useState("");
-	const [notes, setNotes] = useState([]);
-	const [editMode, setEditMode] = useState(false);
-	const [editableNote, setEditableNote] = useState(null);
-  return (
-    <div className="App">
-      <Form 
-	    // setCurrentNote={setCurrentNote}
-		// setIsEditing={setIsEditing}
-		// setNotes={setNotes}
-		// notes={notes}
-		// isEditing={isEditing}
-		// currentNote={currentNote}
-		
-		noteTitle={noteTitle}
-		setNoteTitle={setNoteTitle}
-		notes={notes}
-		setNotes={setNotes}
-		editableNote={editableNote}
-		setEditMode={setEditMode}
-		setEditableNote={setEditableNote}
-		editMode={editMode}
-	  />
-      <div className="note-list">
-        <NoteList 
-		//  setCurrentNote={setCurrentNote}
-		//  setIsEditing={setIsEditing}
-		//  notes={notes}
-		//  setNotes={setNotes}
-		// isEditing={isEditing}
-		// currentNote={currentNote}
-
-		setNoteTitle={setNoteTitle}
-		notes={notes}
-		setNotes={setNotes}
-		setEditMode={setEditMode}
-		setEditableNote={setEditableNote}
-		/>
-      </div>
-    </div>
-  );
+  
 };
 
 export default App;

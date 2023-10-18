@@ -33,63 +33,57 @@
 // }
 // export default Form;
 
-import React from 'react'
-
-const Form = (props) => {
-
+import {useContext} from "react"
+import{NoteContext} from '../contexts/Note'
+const Form = () => {
+	const ctxValue = useContext(NoteContext)
     const createHandler = (event) => {
 		event.preventDefault();
-		if (!props.noteTitle) {
+		if (!ctxValue.noteTitle) {
 			return alert("Please Enter Note Title");
 		}
 		const newNote = {
 			id: Date.now() + "",
-			title: props.noteTitle,
+			title: ctxValue.noteTitle,
 		};
 
-		props.setNotes([...props.notes, newNote]); //
-		// notes = [...notes, newNote]
-		props.setNoteTitle("");
-		//noteTitle = ""
+		ctxValue.setNotes([...ctxValue.notes, newNote]); //
+		ctxValue.setNoteTitle("");
 	};
     const updateHandler = (event) => {
 		event.preventDefault();
 
-		if (!props.noteTitle.trim()) {
+		if (!ctxValue.noteTitle.trim()) {
 			return alert("Please Enter Note Title");
 		}
-		const updatedNotesArray = props.notes.map((note) => {
-			if (note.id === props.editableNote.id) {
-				// 3 === 2
-				// 2 === 2
-				// 1 === 2
+		const updatedNotesArray = ctxValue.notes.map((note) => {
+			if (note.id === ctxValue.editableNote.id) {
+
 				return {
 					...note,
-					title: props.noteTitle,
+					title: ctxValue.noteTitle,
 				};
 
-				// {id: 2, title: "note 222"}
 			}
 
-			return note; // {id: 1, title: "note 1"} // {id: 3, title: 'note 3}
-		});
-		// updatedNotesArray = [{id: 1, title: "note 1"}, {id: 2, title: "note 222"}, {id: 3, title: 'note 3}]
+			return note; 
+        	});
 
-		props.setNotes(updatedNotesArray);
-		props.setEditMode(false);
-		props.setEditableNote(null);
-		props.setNoteTitle("");
+		ctxValue.setNotes(updatedNotesArray);
+		ctxValue.setEditMode(false);
+		ctxValue.setEditableNote(null);
+		ctxValue.setNoteTitle("");
 	};
     
   return (
-    <form onSubmit={props.editMode ? updateHandler : createHandler}>
+    <form onSubmit={ctxValue.editMode ? updateHandler : createHandler}>
 				<input
 					type="text"
-					value={props.noteTitle}
-					onChange={(event) => props.setNoteTitle(event.target.value)}
+					value={ctxValue.noteTitle}
+					onChange={(event) => ctxValue.setNoteTitle(event.target.value)}
 				/>
 				<button type="submit">
-					{props.editMode ? "Update Note" : "Add Note"}
+					{ctxValue.editMode ? "Update Note" : "Add Note"}
 				</button>
 			</form>
   )
