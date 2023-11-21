@@ -1,16 +1,19 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { router } from './router/router';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import NoteProvider from './contexts/Note'
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <NoteProvider>
-    <App />
-    </NoteProvider>
-  </React.StrictMode>
+    <Provider store={store}>
+            <RouterProvider router={router} />
+    </Provider>
+  </React.StrictMode>,
 );
-reportWebVitals();
+
